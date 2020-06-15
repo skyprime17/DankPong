@@ -13,20 +13,22 @@ LIVES = 3
 FG_COLOUR = pygame.Color('white')
 BG_COLOUR = pygame.Color('black')
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("SquashPong")
+pygame.display.set_caption("DankPong")
 
 
 def draw_screen(player):
+        """Draws all the needed rectangles and a scoreboard."""
     screen.fill(BG_COLOUR)
-    pygame.draw.rect(screen, FG_COLOUR, pygame.Rect((0, 0), (WIDTH, BORDER)))  # top
-    pygame.draw.rect(screen, FG_COLOUR, pygame.Rect(0, 0, BORDER, HEIGHT))  # left
-    pygame.draw.rect(screen, FG_COLOUR, pygame.Rect(WIDTH - BORDER, 0, BORDER, HEIGHT))  # right
+    pygame.draw.rect(screen, FG_COLOUR, pygame.Rect((0, 0), (WIDTH, BORDER)))
+    pygame.draw.rect(screen, FG_COLOUR, pygame.Rect(0, 0, BORDER, HEIGHT))
+    pygame.draw.rect(screen, FG_COLOUR, pygame.Rect(WIDTH - BORDER, 0, BORDER, HEIGHT))
     font = pygame.font.SysFont("monospace", 32)
     scoretext = font.render("Score:{} Lives:{}".format(player.score, player.lives), 1, (128, 128, 128))
     screen.blit(scoretext, (WIDTH // 2 - 150, 20))
 
 
 def loss_screen(subject, object):
+        """Message box for the loss screen."""
     root = tk.Tk()
     root.attributes("-topmost", True)
     root.withdraw()
@@ -51,7 +53,7 @@ class Ball(Player):
         self.y = y
         self.vx = vx
         self.vy = vy
-        self.state = True
+        
 
     def show(self, colour=(128, 128, 128)):
         global screen
