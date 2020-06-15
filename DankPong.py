@@ -2,7 +2,6 @@ import pygame
 import tkinter as tk
 from tkinter import messagebox
 import random
-from time import sleep
 
 WIDTH = 600
 HEIGHT = 800
